@@ -27,7 +27,7 @@ perFun (void * arg)
 	while(TRUE){
 	
 	//generando nuevo piso rand.
-	int r = rand()%5 + 1;
+	int r = rand()%PISOS;
 	//generando nuevo tiempo rand.
 	int s = rand()%10 + 1;
 	
@@ -46,7 +46,7 @@ perFun (void * arg)
 		//printf("T EN 0: \n");
 		//printf("Per %d en: %d\n" ,perso->id, perso->p_act);
 		while(r == perso->p_act){
-			r = rand()%5 + 1;
+			r = rand()%PISOS;
 		}
 		
 		perso->p_des = r;

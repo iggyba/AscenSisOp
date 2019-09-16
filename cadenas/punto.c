@@ -75,7 +75,7 @@ crear_punto (punto_t *p)
 {
     int a;
     int b;
-	
+	 
 	
 	printf ("x:");
 	scanf("%d", &a );
@@ -85,12 +85,16 @@ crear_punto (punto_t *p)
 	scanf("%d", &b );
 	p->y = b;
 	
+	res = 1;
+	
 }
 
 void
 mostrar_punto (punto_t *p )
 {
-
+	if(res != 1){
+	printf("DEBE CERAR UN PUNTO PRIMERO\n");
+	}else{
 	printf ("(%d , %d)\n", p->x ,p->y);
-
+	}
 }

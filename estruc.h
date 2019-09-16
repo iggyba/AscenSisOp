@@ -5,6 +5,7 @@
 #include <pthread.h>
 
 #define PERSONS 1
+#define PISOS 5
 
 #define TRUE 1
 #define FALSE 0
@@ -33,6 +34,7 @@ typedef struct
   int p_des;  
   int estado;
   int remTime;
+  int cola;
 } perso_ts;
 
 
