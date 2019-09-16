@@ -22,7 +22,7 @@ main()
 	for(;;){
 	
 	//printf ("(%d , %d)\n", p.x ,p.y);	
-	//printf ("cab apuntando a: %u\n", cab);
+	//printf ("puntero a cabeza en principal: %u\n", pca);
 	
 	menu_principal( ptr , pca);
 	

@@ -48,16 +48,28 @@ insertar_final (punto_t *p, punto_t **cab)
 punto_t a;
 
 a.sig = *cab;
+printf("cab es: %u\n" , cab);
+printf("*cab es: %u\n" , *cab);
+
 
 	punto_t *pun;
 	pun = (punto_t*)malloc(sizeof(punto_t));
 	if (pun == NULL){
-	printf("no hay espacio para cabe");
+	printf("no hay espacio para cabe\n");
 	exit (EXIT_SUCCESS);
-	
 	}
 	
-	if((*cab)->sig == NULL){
+	
+	if(*cab == 0){	
+	pun->x = p->x;
+	pun->y = p->y;
+	pun->sig = *cab; 	
+	*cab = pun;
+	}
+	
+	else if((*cab)->sig == NULL){
+	
+	printf("hay un punto\n");
 	
 	pun->x = p->x;
 	pun->y = p->y;
@@ -68,8 +80,8 @@ a.sig = *cab;
  	}
  	else{
 	while(1){
-
 	
+	printf("dentro while\n");
 	(*cab) = (*cab)->sig;
 	
 	if((*cab)->sig == NULL){
@@ -82,9 +94,11 @@ a.sig = *cab;
 	break;
 			}
 		}
+	*cab = a.sig;
 	}
 	
-*cab = a.sig;
+
+
 
 }
 

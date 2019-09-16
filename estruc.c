@@ -1,8 +1,8 @@
-#include <stdio.h>
+#include <pthread.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <time.h>
-#include <pthread.h>
 #include "estruc.h"
 
 int
@@ -13,26 +13,40 @@ main()
 	
 	perso_ts perso[PERSONS];
 	
+	//puntero personas
 	perso_ts *ptper[PERSONS];
+	for (int i = 0; i < PERSONS; i++)
+	{	
+	ptper[i] = &(perso[i]);
+	}
 	
-	ptper = &perso;
 	
 	//cabezas pisos
 	perso_ts *cabp[PISOS];
 	perso_ts **pca[PISOS];	
-	cabp = NULL;	
-	pca = &cabp;
+	
 	//cabezas colas
 	perso_ts *cabc[PISOS];
 	perso_ts **pcac[PISOS];	
-	cabc = NULL;	
-	pcac = &cabc;
+	
 	//cabeza elevador
 	perso_ts *cabe;
-	perso_ts **pcae;	
-	cabp = NULL;	
+	perso_ts **pcae;
+	cabe = NULL;	
 	pcae = &cabe;
 		
+	
+	
+	for (int i = 0; i < PISOS; i++)
+	{
+	cabp[i] = NULL;	
+	pca[i]  = &(cabp[i]);
+	cabc[i] = NULL;	
+	pcac[i] = &(cabc[i]);
+	
+	}
+	
+	
 	
 	srand(time(NULL));
 	
@@ -52,9 +66,22 @@ main()
 	, .cond = &cond};
 	
 	
+	
+	
+	init(perso , ptper , pca);
+	usleep(1000000);
+	
+	for (int i = 0; i < PISOS; i++)
+	{
+		printf("Piso: %d\n", i);
+		recorrer(pca[i],&perso[i]);
+		
+	}
+	usleep(1000000);
+	
+	
 	pthread_create (&elevad_t, NULL, elevFun, (void *)(&elev));
 
-	init(perso);
 	
 
 	for (int i = 0; i < PERSONS; i++){
@@ -64,6 +91,7 @@ main()
 
 
 	pthread_join (elevad_t, NULL);
+	pthread_join (perso_t[0], NULL);
 	
 	
 
@@ -71,8 +99,10 @@ main()
 }
 
 void
-init (perso_ts perso[])
+init (perso_ts perso[],perso_ts *ptper[],perso_ts **pca[])
 {
+
+		
 	for (int i = 0; i < PERSONS; i++)
 	{
 	 
@@ -84,7 +114,10 @@ init (perso_ts perso[])
 		perso[i].p_des = r;		
 		perso[i].estado = PENSANDO ;
 		perso[i].remTime = s;
-
+		
+		
+		insertar_final(ptper[r] , pca[r]);
+		printf("Persona: %d ira a: %d\n", i, r);
 		
 
 	}

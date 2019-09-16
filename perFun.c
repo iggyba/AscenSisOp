@@ -29,17 +29,23 @@ perFun (void * arg)
 	//generando nuevo piso rand.
 	int r = rand()%PISOS;
 	//generando nuevo tiempo rand.
-	int s = rand()%10 + 1;
+	//int s = rand()%10 + 1;
 	
 	//mientras no se acabe el tiempo bajar tiempo		
-	usleep(100000);
+	usleep(1000000);
 		//printf("--bajando T de: %d\n" , perso->remTime);
 	perso->remTime = perso->remTime - 1;
 		//printf("--A: %d\n" , perso->remTime);
 		
 		//si tiempo acaba moverse y elegir otro piso
+		//llamar sched
 	if(perso->remTime == 0){
 		
+		
+		
+		pthread_mutex_lock(perso->p_mutex);
+		*(perso->cond) = TRUE;
+		pthread_mutex_unlock(perso->p_mutex);
 		
 		perso->estado = MOVIENDOSE;
 		
@@ -52,10 +58,11 @@ perFun (void * arg)
 		perso->p_des = r;
 		//printf("Per %d red a: %d\n" ,perso->id, perso->p_act);
 		
-		//volver a pensar
-		perso->estado = PENSANDO;
 		
-		perso->remTime = s;
+		//VOLVER A PENSAR
+		//perso->estado = PENSANDO;
+		
+		//perso->remTime = s;
 		//printf("--Tiempo ahora: %d\n" , (perso->remTime) ) ;
 		
 	

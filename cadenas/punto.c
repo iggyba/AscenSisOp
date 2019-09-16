@@ -11,6 +11,8 @@ void
 menu_principal(punto_t *p, punto_t **cab)
 {
 
+//printf ("puntero a cabeza en metodo: %u\n", cab);
+
 printf ("Elegir opcion:\n");
 printf ("1. crear punto.\n");
 printf ("2. mostrar punto a insertar.\n");

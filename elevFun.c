@@ -14,12 +14,22 @@ elevFun (void * arg)
 	printf("Elevador en: %d\n" , elev->p_act);
 	printf("Elevador ira a: %d\n" , elev->p_des);
 	
-	while(TRUE){
-	
-	printf("");
-	usleep(100000);
-	
+	pthread_mutex_lock(elev->p_mutex);
+
+	while (!*(elev->cond))
+	{
+		printf ("Thread %d sleeping.\n", elev->id);
+		pthread_cond_wait(elev->p_cond, elev->p_mutex);
 	}
+
+	printf ("Thread %d working.\n", elev->id);
+
+	pthread_mutex_unlock(elev->p_mutex);
+
+	
+	/*for(;;){	
+	printf("");
+	usleep(1000000);}*/
 
 	return NULL;
 }

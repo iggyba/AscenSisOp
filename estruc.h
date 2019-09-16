@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
-#include <pthread.h>
-
-#define PERSONS 1
+#define PERSONS 10
 #define PISOS 5
 
 #define TRUE 1
@@ -27,7 +21,9 @@ typedef struct
   int *cond;
 } elevador_t;
 
-typedef struct
+typedef struct persona perso_ts;
+
+struct persona
 {
   int id;
   int p_act;
@@ -35,11 +31,20 @@ typedef struct
   int estado;
   int remTime;
   int cola;
-} perso_ts;
+   pthread_mutex_t *p_mutex;
+  pthread_cond_t *p_cond;
+  int *cond;
+  perso_ts *sig;
+} ;
 
 
 
-void init (perso_ts []);
+void init (perso_ts perso[],perso_ts *ptper[],perso_ts **pca[]);
 void *elevFun (void *);
 void *perFun (void *);
 void *process_hnd (void *);
+void insertar_final (perso_ts *perso, perso_ts **ptper);
+void recorrer (perso_ts **ptper ,perso_ts * per);
+
+
+
