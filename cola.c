@@ -17,41 +17,38 @@ a.sig = *ptper;
 	pun = (perso_ts*)malloc(sizeof(perso_ts));
 	if (pun == NULL){
 	printf("no hay espacio para cabe");
-	exit (EXIT_SUCCESS);
-	
-	}
-	
+	exit (EXIT_SUCCESS);	
+	}	
 	if(*ptper == 0){
 	pun->id      = perso->id;
   	pun->p_act   = perso->p_act;
   	pun->p_des   = perso->p_des;  
   	pun->estado  = perso->estado;
   	pun->remTime = perso->remTime;
-  	pun->cola    = perso->cola;
-		
-	
+  	pun->cola    = perso->cola;	
 	pun->sig = *ptper; 	
 	*ptper = pun;
-	}
-	
-	
-	else if((*ptper)->sig == NULL){
-	
-	
+	}	
+	else if((*ptper)->sig == NULL){	
+	pun->id      = perso->id;
+  	pun->p_act   = perso->p_act;
+  	pun->p_des   = perso->p_des;  
+  	pun->estado  = perso->estado;
+  	pun->remTime = perso->remTime;
+  	pun->cola    = perso->cola;	
 	(*ptper)->sig = pun;
 	pun->sig = NULL;
-
  	}
  	else{
-	while(1){
-
-	
-	(*ptper) = (*ptper)->sig;
-	
-	if((*ptper)->sig == NULL){
-
- 	
-	
+	while(1){	
+	(*ptper) = (*ptper)->sig;	
+	if((*ptper)->sig == NULL){	
+	pun->id      = perso->id;
+  	pun->p_act   = perso->p_act;
+  	pun->p_des   = perso->p_des;  
+  	pun->estado  = perso->estado;
+  	pun->remTime = perso->remTime;
+  	pun->cola    = perso->cola;	
 	(*ptper)->sig = pun;
 	pun->sig = NULL;
 	break;
@@ -92,7 +89,7 @@ perso_ts b;
  	//printf("elegir pos. a elim. : \n");
 	//scanf("%d" ,&cn);
 
-	printf("ELIGIO POS. : %d\n" ,cn);
+	printf("Alguien a:%d\n" ,cn);
 
 	//pasar uno mas de deseado y guardar pos
 	for (i = 0; i < (cn+1); ++i)
@@ -140,7 +137,7 @@ a.sig = *ptper;
 	while(1){
 	
 	printf("(id: %d)\n", (*ptper)->id /*, (*ptper)->p_act*/);
-	usleep(100000);
+	usleep(10000);
 	
 	
 	if((*ptper)->sig == NULL){

@@ -1,4 +1,4 @@
-#define PERSONS 20
+#define PERSONS 10
 #define PISOS 5
 
 #define TRUE 1

@@ -59,6 +59,10 @@ main()
 	
 	}
 	
+	//cabezas cola elevador
+	perso_ts *cabp[PISOS];
+	perso_ts **pca[PISOS];	
+	
 	//printf("cab en main: %u", pca[0]);
 	
 	
@@ -129,7 +133,7 @@ main()
 		}
 		
 		
-	usleep(4000000);	
+	usleep(1000000);	
 	for (int i = 0; i < PISOS; i++)
 	{
 		printf("Cola: %d\n", i);

@@ -40,22 +40,22 @@ perFun (void * arg)
 	a.sig = *ptper;
  	
 	 	if( (*ptper) == NULL){ 	
-	 	printf("--No hay puntos\n"); 	
+	 	//printf("--No hay puntos\n"); 	
 	 			}
  		else{
 		while(1){
-		printf("INSIDE\n"); 
-		printf("IDDD %d\n", (*ptper)->id); 
+		//printf("INSIDE\n"); 
+		//printf("IDDD %d\n", (*ptper)->id); 
 		if((*ptper)->id == perso->id){
 		
-		printf("returning\n"); 
+		 
 		return c;
  		//printf("(%d, %d)\n", (*cab)->x , (*cab)->y);
  		break;			}
- 		printf("change add\n"); 
+ 		
  		c++;
  		(*ptper) = (*ptper)->sig;
- 		printf("change add2\n"); 
+ 		
 			}
 		}
 	*ptper = a.sig;	   
@@ -85,8 +85,7 @@ perFun (void * arg)
 		
 		pthread_mutex_lock(&(perso->p_mutex)[perso->id]);
 		//*(perso->cond) = TRUE;
-		printf("Per quiere mover\n");
-		
+		//printf("Per quiere mover\n");
 		insertar_final(perso , perso->pcac);
 		extraer_med(perso->pca, mipos(perso->pca));
 		printf("Per: %d en cola\n", perso->id);
