@@ -48,8 +48,8 @@ insertar_final (punto_t *p, punto_t **cab)
 punto_t a;
 
 a.sig = *cab;
-printf("cab es: %u\n" , cab);
-printf("*cab es: %u\n" , *cab);
+//printf("cab es: %u\n" , cab);
+//printf("*cab es: %u\n" , *cab);
 
 
 	punto_t *pun;
@@ -105,6 +105,7 @@ printf("*cab es: %u\n" , *cab);
 void
 recorrer (punto_t **cab)
 { 
+//printf("Cab en rec. %u\n" , cab);
 punto_t a;
 
 a.sig = *cab;
@@ -210,16 +211,14 @@ extraer_med(punto_t **cab){
 //comenzar contador
 
 int i;
-int j;
+//int j;
 
 punto_t a;
 //remember cabeza begining
 a.sig = *cab;
 //remember one after selected.
 punto_t b;
-int cn = 0;
-
-  		
+int cn = 0;	
   		
 
  	if( (*cab) == NULL)
@@ -229,6 +228,7 @@ int cn = 0;
  	if((*cab)->sig == NULL)
  	{
  	*cab = NULL;
+ 	printf("solo un ELEM\n"); 
  	}else
  	{
  	
@@ -249,17 +249,21 @@ int cn = 0;
   		{
   		  (*cab) = (*cab)->sig;
   		}	
-  		(*cab)->sig = b.sig;		
-	 	
+  		(*cab)->sig = b.sig; 
+  		
+  		*cab = a.sig;	
  		
-	}
-	
-		*cab = a.sig;	
-	
-
-
+	}	
+		
 
 }
+
+
+
+
+
+
+
 
 
 

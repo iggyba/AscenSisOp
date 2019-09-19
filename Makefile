@@ -2,7 +2,7 @@ CC = gcc
 IDIR = .
 CFLAGS = -I$(IDIR) -std=gnu99
 LIBS = -lpthread
-OBJ = estruc.o elevFun.o perFun.o cola.o
+OBJ = estruc.o elevFun.o perFun.o cola.o schedFun.o
 DEPS = estruc.h
 
 %.o: %.c $(DEPS)

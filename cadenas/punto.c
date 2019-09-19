@@ -29,7 +29,7 @@ scanf("%d",&sel);
     switch (sel){
         case 1:
           printf ("creando..\n");
-          //printf(" ptr de fun %u \n" , p);
+          //printf(" cab de fun %u \n" , cab);
           crear_punto (p);
           break;
         case 2:

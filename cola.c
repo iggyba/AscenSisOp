@@ -21,7 +21,14 @@ a.sig = *ptper;
 	
 	}
 	
-	if(*ptper == 0){	
+	if(*ptper == 0){
+	pun->id      = perso->id;
+  	pun->p_act   = perso->p_act;
+  	pun->p_des   = perso->p_des;  
+  	pun->estado  = perso->estado;
+  	pun->remTime = perso->remTime;
+  	pun->cola    = perso->cola;
+		
 	
 	pun->sig = *ptper; 	
 	*ptper = pun;
@@ -58,15 +65,68 @@ a.sig = *ptper;
 
 }
 
+void
+extraer_med(perso_ts **ptper, int cn){
+
+//comenzar contador
+
+int i;
+
+perso_ts a;
+//remember cabeza begining
+a.sig = *ptper;
+//remember one after selected.
+perso_ts b;
+//int cn = 0;  		
+
+ 	if( (*ptper) == NULL)
+ 	{
+ 	printf("--No hay puntos\n"); 	
+ 	}else 
+ 	if((*ptper)->sig == NULL)
+ 	{
+ 	*ptper = NULL;
+ 	}else
+ 	{
+ 	
+ 	//printf("elegir pos. a elim. : \n");
+	//scanf("%d" ,&cn);
+
+	printf("ELIGIO POS. : %d\n" ,cn);
+
+	//pasar uno mas de deseado y guardar pos
+	for (i = 0; i < (cn+1); ++i)
+  		{
+  		  (*ptper) = (*ptper)->sig;
+  		}
+  	b.sig = (*ptper);
+  	//set head back
+  	*ptper = a.sig;
+  		for (i = 0; i < (cn-1); ++i)
+  		{
+  		  (*ptper) = (*ptper)->sig;
+  		}	
+  		(*ptper)->sig = b.sig;	
+  		
+  		*ptper = a.sig;	 	
+ 		
+	}	
+		
+
+}
 
 
 
 void
-recorrer (perso_ts **ptper ,perso_ts *per)
+recorrer (perso_ts **ptper )
 { 
 perso_ts a;
 
 a.sig = *ptper;
+//printf("cab en fun: %u", ptper);
+
+
+
  	//printf("dir cab de rec. : %u\n", cab);
  	//printf("en a: %p\n", a.sig);
  	
@@ -78,8 +138,9 @@ a.sig = *ptper;
  	}
  	else{
 	while(1){
-
-	printf("(%d, %d)\n", (per)->id , (per)->p_act);
+	
+	printf("(id: %d)\n", (*ptper)->id /*, (*ptper)->p_act*/);
+	usleep(100000);
 	
 	
 	if((*ptper)->sig == NULL){
